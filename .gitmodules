@@ -1,0 +1,3 @@
+[submodule "vendor/plugins/basic_model"]
+	path = vendor/plugins/basic_model
+	url = git://github.com/topfunky/basic_model.git

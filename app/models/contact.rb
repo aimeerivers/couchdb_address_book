@@ -1,0 +1,3 @@
+class Contact < BasicModel
+
+end
