@@ -1,0 +1,9 @@
+<h1>Contacts</h1>
+
+<% @contacts.rows.each do |contact| -%>
+
+  <h2><%= contact.full_name %></h2>
+  <p><%= simple_format(contact.address) %></p>
+  <p><%= link_to 'edit', edit_contact_path(contact) %></p>
+
+<% end -%>

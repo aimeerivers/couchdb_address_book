@@ -1,7 +1,7 @@
  class Contact < BasicModel
-
-  def default_attributes
-    {:first_name => nil, :last_name => nil}
+  
+  def full_name
+    "#{firstname} #{lastname}"
   end
 
 end
