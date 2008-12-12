@@ -1,5 +1,7 @@
 <h1>Contacts</h1>
 
+<p><%= link_to('New contact', new_contact_path) %></p>
+
 <% @contacts.rows.each do |contact| -%>
 
   <h2><%= contact.full_name %></h2>

@@ -1,3 +1,6 @@
 [submodule "vendor/plugins/basic_model"]
 	path = vendor/plugins/basic_model
 	url = git://github.com/topfunky/basic_model.git
+[submodule "vendor/plugins/pdf_label_maker"]
+	path = vendor/plugins/pdf_label_maker
+	url = git://github.com/sermoa/pdf_label_maker.git

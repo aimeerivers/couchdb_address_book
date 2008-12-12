@@ -2,6 +2,13 @@ class ContactsController < ApplicationController
 
   def index
     @contacts = Contact.view(database_name, 'contacts/by_last_name-map')
+    respond_to do |format|
+      format.pdf do
+        pdf = PdfLabelMaker.avery_labels(@contacts.rows)
+        send_data pdf.render, :filename => 'labels.pdf', :type => 'application/pdf'
+      end
+      format.html
+    end
   end
 
   def edit
