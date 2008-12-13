@@ -1,7 +1,7 @@
 class ContactsController < ApplicationController
 
-    require 'pdf/writer'
-    include PDF
+  require 'pdf/writer'
+  include PDF
     
   def index
     @contacts = Contact.view(database_name, 'contacts/by_last_name-map')
