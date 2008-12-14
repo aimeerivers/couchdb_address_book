@@ -1,6 +1,6 @@
 <h1>Edit <%= @contact.full_name %></h1>
 
-<% form_for @contact do |f| -%>
+<% form_for @contact, :html => {:multipart => true} do |f| -%>
   
   <%= f.hidden_field '_rev' %>
   
@@ -13,6 +13,22 @@
   <p><%= f.label :address %><br />
   <%= f.text_area :address, :rows => 4 %></p>
 
+  <%= f.label :attachment %>
+  <%= f.file_field :attachment %>
+
   <p><%= f.submit :save %></p>
   
 <% end -%>
+
+<% if @contact._attachments -%>
+<h2>Attachments</h2>
+<ul>
+  <% @contact._attachments.each do |attachment_name, attachment_attributes| %>
+    <li>
+      <%= link_to attachment_name, attachment_contact_path(:id => @contact, :filename => attachment_name) %> 
+      <%= number_to_human_size(attachment_attributes['length']) %>
+    </li>
+  <% end %>
+</ul>
+<% end -%>
+

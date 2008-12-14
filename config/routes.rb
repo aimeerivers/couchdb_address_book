@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
 
-  map.resources :contacts
+  map.resources :contacts, :member => {:attachment => :get}
   
   # The priority is based upon order of creation: first created -> highest priority.
 

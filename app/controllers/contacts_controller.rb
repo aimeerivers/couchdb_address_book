@@ -47,4 +47,15 @@ class ContactsController < ApplicationController
     redirect_to(contacts_path)
   end
   
+  def attachment
+    @contact = Contact.find(database_name, params[:id])
+    metadata = @contact._attachments[params[:filename]]
+    data = Contact.db(database_name).fetch_attachment(@contact.id, params[:filename])
+    send_data(data, {
+      :filename    => params[:filename],
+      :type        => metadata['content_type'],
+      :disposition => "inline",
+    })
+  end
+  
 end
