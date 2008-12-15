@@ -21,14 +21,15 @@
 <% end -%>
 
 <% if @contact._attachments -%>
-<h2>Attachments</h2>
-<ul>
-  <% @contact._attachments.each do |attachment_name, attachment_attributes| %>
-    <li>
-      <%= link_to attachment_name, attachment_contact_path(:id => @contact, :filename => attachment_name) %> 
-      <%= number_to_human_size(attachment_attributes['length']) %>
-    </li>
-  <% end %>
-</ul>
+  <h2>Attachments</h2>
+  <% @contact._attachments.each do |attachment_name, attachment_attributes| -%>
+    <% if %w(image/jpeg image/png).include?(attachment_attributes['content_type']) -%>
+      <% link_content = image_tag(attachment_contact_path(:id => @contact, :filename => attachment_name), :width => '200') -%>
+    <% else -%>
+      <% link_content = attachment_name -%>
+    <% end -%>
+    <%= link_to(link_content,
+      attachment_contact_path(:id => @contact, :filename => attachment_name), :popup => true) %>
+  <% end -%>
 <% end -%>
 
